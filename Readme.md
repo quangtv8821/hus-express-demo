@@ -3,10 +3,24 @@
 
 A simple ExpressJS server.
 
+![Logo](https://www.google.com/u/0/ac/images/logo.gif?uid=111950459518512810315&service=google_gsuite)
+
+## 🛠 Tech
+- Javascript
+- NodeJS (ExpressJS framework)
+
+
 
 ## Authors
 
-- [quangtv@rabiloo.com](quangtv@rabiloo.com)
+- [quangtv@rabiloo.com](https://github.com/quangtv8821)
+
+
+## 🔗 Links
+[![facebook](https://img.shields.io/badge/facebook-0A66C2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/quangn123/)
+[![gmail](https://img.shields.io/badge/gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox)
+
+
 
 ## Installation
 
