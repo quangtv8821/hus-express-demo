@@ -1,20 +1,16 @@
 import { DataTypes, Model } from "sequelize"
 
-class Account extends Model {}
+class Lesson extends Model {}
 
 
 export default function (sequelize) {
-    Account.init({
-        username: {
+    Lesson.init({
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        }
     }, {
         sequelize,
-        modelName: 'account'
+        modelName: 'lesson'
     })
 }

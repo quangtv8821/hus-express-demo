@@ -45,5 +45,11 @@ A simple ExpressJS server.
 | :-----------------|  :------------------------------------|
 | `/account`        |  Account of student                   |
 | `/student`        |  Student information                  |
-| `/class`          |  Class student study                  |
+| `/subject`        |  Subject student study                |
+| `/lesson`         |  Lesson in one subject                |
+
+## Relation
+-- 1 student has 1 account
+-- 1 subject has many students and 1 one student in many classes
+-- 1 subject has many lessons
 
