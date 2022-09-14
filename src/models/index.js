@@ -50,8 +50,16 @@ Account.hasMany(Document)
 Document.belongsTo(Account)
 
 /* Many Student has many subject */
-Student.belongsToMany(Subject, { through: 'studentHasSubject' });
-Subject.belongsToMany(Student, { through: 'studentHasSubject' });
+Student.belongsToMany(Subject, { through: 'studentHasSubject' })
+Subject.belongsToMany(Student, { through: 'studentHasSubject' })
+
+/* 1 document has many lesson */
+Lesson.hasMany(Document)
+Document.belongsTo(Lesson)
+
+/* 1 teacher has many Subject */
+Teacher.hasMany(Subject)
+Subject.belongsTo(Teacher)
 
 /** Force update database */
 // try {
