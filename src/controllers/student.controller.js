@@ -1,18 +1,16 @@
-// import sequelize from "../models/index.js"
-
-// const Student = sequelize.model('student')
 import { Student } from '../models/index.js'
+import CODE from '../constants/status.js'
 
-async function find(req, res) {
+async function create(req, res) {
     const student = await Student.create({
         name: req.body.name,
         birthDay: req.body.birth_day
     })
-    res.json(student)
+    return res.status(CODE.SUCCESS).json(student)
 }
 
-function create(req, res) {
-    res.json({ok: 'create'})
+function find(req, res) {
+    res.json({ok: 'find'})
 }
 
 export {
