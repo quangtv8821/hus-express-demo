@@ -2,6 +2,7 @@ import DEFAULT_PASSWORD from "../constants/default_password.js"
 import { Account } from "../models/index.js"
 import CODE from '../constants/status.js'
 import bcrypt from 'bcrypt'
+import { where } from "sequelize"
 
 function findAll(req, res) {
     res.json({ok: 'ok123'})
@@ -106,9 +107,21 @@ async function login(req, res) {
     return res.status(CODE.SUCCESS).json(account)
 }
 
+async function softDelete(req, res) {
+    const id = req.params.id
+
+    await Account.update({
+        is_deleted: true,
+    }, {
+        where: {id: id}
+    })
+    return res.status(CODE.SUCCESS).json({message: 'success'})
+}
+
 export {
     findAll,
     createStudentAccount,
     createTeacherAccount,
-    login
+    login,
+    softDelete
 }

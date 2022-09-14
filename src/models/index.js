@@ -3,9 +3,10 @@ import CONFIG from '../configs/mysql.config.js'
 // import models
 import accountModel from "./account.model.js"
 import studentModel from "./student.model.js"
-import classModel from "./subject.model.js"
+import subjectModel from "./subject.model.js"
 import lessonModel from './lessons.model.js'
 import teacherModel from "./teacher.model.js"
+import documentModel from "./document.model.js"
 
 /** Create connection instance */
 const sequelize = new Sequelize(CONFIG.DATABASE, CONFIG.USERNAME, CONFIG.PASSWORD, {
@@ -28,30 +29,43 @@ checkConnection()
 /** Register models */
 const Account = accountModel(sequelize)
 const Student = studentModel(sequelize)
-const Class = classModel(sequelize)
+const Subject = subjectModel(sequelize)
 const Lesson = lessonModel(sequelize)
 const Teacher = teacherModel(sequelize)
+const Document = documentModel(sequelize)
 
 
 /** Define Relation */
+
+/* 1 student has 1 account */
 Student.hasOne(Account)
 Account.belongsTo(Student)
 
+/* 1 teacher has 1 account */
 Teacher.hasOne(Account)
 Account.belongsTo(Teacher)
 
+/* 1 Account has many document */
+Account.hasMany(Document)
+Document.belongsTo(Account)
+
+/* Many Student has many subject */
+Student.belongsToMany(Subject, { through: 'studentHasSubject' });
+Subject.belongsToMany(Student, { through: 'studentHasSubject' });
+
 /** Force update database */
-try {
-    sequelize.sync({force: false})
-} catch (error) {
-    console.log(error)
-}
+// try {
+//     sequelize.sync({force: false})
+// } catch (error) {
+//     console.log(error)
+// }
 
 export {
     sequelize,
     Account,
     Student,
-    Class,
+    Subject,
     Lesson,
-    Teacher
+    Teacher,
+    Document
 }

@@ -34,9 +34,21 @@ async function findById(req, res) {
     return res.status(CODE.SUCCESS).json(student)
 }
 
+async function softDelete(req, res) {
+    const id = req.params.id
+
+    await Student.update({
+        is_deleted: true,
+    }, {
+        where: {id: id}
+    })
+    return res.status(CODE.SUCCESS).json({message: 'success'})
+}
+
 
 export {
     create,
     findAll,
-    findById
+    findById,
+    softDelete
 }
