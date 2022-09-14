@@ -1,1 +1,0 @@
--- Including constant folder of project
