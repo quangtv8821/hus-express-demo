@@ -50,6 +50,8 @@ A simple ExpressJS server.
 
 ## Relation
 -- 1 student has 1 account
--- 1 subject has many students and 1 one student in many classes
+-- 1 teacher has 1 account
+-- 1 subject has many students
+-- 1 subject has 1 teacher
 -- 1 subject has many lessons
 

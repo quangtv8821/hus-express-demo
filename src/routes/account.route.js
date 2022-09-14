@@ -1,11 +1,13 @@
 import express from 'express'
-import { create, findAll, login } from '../controllers/account.controller.js'
+import { createTeacherAccount, createStudentAccount, findAll, login } from '../controllers/account.controller.js'
 
 const accountRoute = express.Router()
 
 accountRoute.get('/', findAll)
 
-accountRoute.post('/', create)
+accountRoute.post('/student', createStudentAccount)
+
+accountRoute.post('/teacher', createTeacherAccount)
 
 accountRoute.post('/login', login)
 

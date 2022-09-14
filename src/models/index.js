@@ -34,12 +34,15 @@ const Teacher = teacherModel(sequelize)
 
 
 /** Define Relation */
-Student.hasMany(Account)
+Student.hasOne(Account)
 Account.belongsTo(Student)
+
+Teacher.hasOne(Account)
+Account.belongsTo(Teacher)
 
 /** Force update database */
 try {
-    sequelize.sync({force: true})
+    sequelize.sync({force: false})
 } catch (error) {
     console.log(error)
 }

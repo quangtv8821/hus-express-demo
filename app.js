@@ -1,12 +1,13 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import {sequelize} from './src/models/index.js' // importing connection
+import { sequelize } from './src/models/index.js' // importing connection
 // importing routes
 import accountRoute from './src/routes/account.route.js'
 import studentRoute from './src/routes/student.route.js'
 import subjectRoute from './src/routes/subject.model.js'
 import lessonRoute from './src/routes/lesson.route.js'
+import teacherRoute from './src/routes/teacher.route.js'
 
 
 const app = express()
@@ -27,8 +28,9 @@ app.use(cors(corsOptions))
 // router
 app.use('/account', accountRoute)
 app.use('/student', studentRoute)
-app.use('/class', subjectRoute)
+app.use('/subject', subjectRoute)
 app.use('/lesson', lessonRoute)
+app.use('/teacher', teacherRoute)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

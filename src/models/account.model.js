@@ -14,6 +14,14 @@ export default function (sequelize) {
         password: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        is_admin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     }, {        
         sequelize,
@@ -23,10 +31,6 @@ export default function (sequelize) {
     Account.addHook('beforeCreate', async (account, options) => {
         const hashedPassword = await bcrypt.hash(account.password, saltRounds)
         account.password = hashedPassword
-    })
-
-    Account.addHook('beforeFind', async (account, options) => {
-        console.log('beforeFind', account)
     })
 
     return Account

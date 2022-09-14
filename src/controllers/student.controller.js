@@ -15,7 +15,7 @@ async function findAll(req, res) {
     })
 
     if(!student || student.length === 0) {
-        return res.status(CODE.NOTFOUND).json({message: 'No student found'})
+        return res.status(CODE.NOT_FOUND).json({message: 'No student found'})
     }
 
     return res.status(CODE.SUCCESS).json(student)
@@ -28,7 +28,7 @@ async function findById(req, res) {
     })
 
     if(!student) {
-        return res.status(CODE.NOTFOUND).json({message: 'No student found'})
+        return res.status(CODE.NOT_FOUND).json({message: 'No student found'})
     }
 
     return res.status(CODE.SUCCESS).json(student)
