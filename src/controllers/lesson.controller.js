@@ -1,4 +1,4 @@
-function find(req, res) {
+function findAll(req, res) {
     res.json({ok: 'ok123'})
 }
 
@@ -7,6 +7,6 @@ function create(req, res) {
 }
 
 export {
-    find,
+    findAll,
     create
 }

@@ -1,10 +1,10 @@
 import { DataTypes, Model } from "sequelize"
 
-class Class extends Model {}
+class Subject extends Model {}
 
 
 export default function (sequelize) {
-    Class.init({
+    Subject.init({
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,4 +25,6 @@ export default function (sequelize) {
         sequelize,
         modelName: 'class'
     })
+
+    return Subject
 }

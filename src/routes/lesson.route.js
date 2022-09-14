@@ -1,9 +1,9 @@
 import express from 'express'
-import { create, find } from '../controllers/lesson.controller.js'
+import { create, findAll } from '../controllers/lesson.controller.js'
 
 const lessonRoute = express.Router()
 
-lessonRoute.get('/', find)
+lessonRoute.get('/', findAll)
 
 lessonRoute.post('/', create)
 

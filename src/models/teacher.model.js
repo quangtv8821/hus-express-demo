@@ -1,10 +1,10 @@
 import { DataTypes, Model } from "sequelize"
 
-class Student extends Model {}
+class Teacher extends Model {}
 
 
 export default function (sequelize) {
-    Student.init({
+    Teacher.init({
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -15,11 +15,15 @@ export default function (sequelize) {
         is_deleted: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
+        },
+        is_admin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     }, {
         sequelize,
-        modelName: 'student'
+        modelName: 'teacher'
     })
 
-    return Student
+    return Teacher
 }

@@ -5,6 +5,7 @@ import accountModel from "./account.model.js"
 import studentModel from "./student.model.js"
 import classModel from "./subject.model.js"
 import lessonModel from './lessons.model.js'
+import teacherModel from "./teacher.model.js"
 
 /** Create connection instance */
 const sequelize = new Sequelize(CONFIG.DATABASE, CONFIG.USERNAME, CONFIG.PASSWORD, {
@@ -29,6 +30,12 @@ const Account = accountModel(sequelize)
 const Student = studentModel(sequelize)
 const Class = classModel(sequelize)
 const Lesson = lessonModel(sequelize)
+const Teacher = teacherModel(sequelize)
+
+
+/** Define Relation */
+Student.hasMany(Account)
+Account.belongsTo(Student)
 
 /** Force update database */
 try {
@@ -43,4 +50,5 @@ export {
     Student,
     Class,
     Lesson,
+    Teacher
 }

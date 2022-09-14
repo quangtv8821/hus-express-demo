@@ -13,4 +13,6 @@ export default function (sequelize) {
         sequelize,
         modelName: 'lesson'
     })
+
+    return Lesson
 }
