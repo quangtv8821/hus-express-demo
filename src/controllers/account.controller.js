@@ -2,6 +2,9 @@ import DEFAULT_PASSWORD from "../constants/default_password.js"
 import { Account } from "../models/index.js"
 import CODE from '../constants/status.js'
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken"
+
+const jwtSecret = process.env.JWT_SECRET
 
 function findAll(req, res) {
     res.json({ok: 'ok123'})
@@ -103,7 +106,9 @@ async function login(req, res) {
         return res.status(CODE.NOT_FOUND).json({message: 'Password does not match'})
     }
 
-    return res.status(CODE.SUCCESS).json(account)
+    const token = await jwt.sign({ id: account.id }, jwtSecret, { expiresIn: '7d' })
+
+    return res.status(CODE.SUCCESS).json({access_token: token})
 }
 
 async function softDelete(req, res) {

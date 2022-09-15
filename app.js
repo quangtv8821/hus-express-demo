@@ -9,6 +9,7 @@ import subjectRoute from './src/routes/subject.model.js'
 import lessonRoute from './src/routes/lesson.route.js'
 import teacherRoute from './src/routes/teacher.route.js'
 import documentRoute from './src/routes/document.route.js'
+import { authJwt } from './src/middleware/auth.middleware.js'
 
 const app = express()
 const port = process.env.PORT || 3001
@@ -30,7 +31,7 @@ app.use('/static', express.static('src/public'))
 
 // router
 app.use('/account', accountRoute)
-app.use('/student', studentRoute)
+app.use('/student', authJwt , studentRoute)
 app.use('/subject', subjectRoute)
 app.use('/lesson', lessonRoute)
 app.use('/teacher', teacherRoute)
