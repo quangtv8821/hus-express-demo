@@ -2,4 +2,4 @@
 
 .env
 
-src/public/documents/
+src/public/documents/**
