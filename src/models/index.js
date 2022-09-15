@@ -62,11 +62,11 @@ Teacher.hasMany(Subject)
 Subject.belongsTo(Teacher)
 
 /** Force update database */
-// try {
-//     sequelize.sync({force: false})
-// } catch (error) {
-//     console.log(error)
-// }
+try {
+    sequelize.sync({force: false})
+} catch (error) {
+    console.log(error)
+}
 
 export {
     sequelize,

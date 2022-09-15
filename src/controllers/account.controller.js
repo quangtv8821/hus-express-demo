@@ -2,7 +2,6 @@ import DEFAULT_PASSWORD from "../constants/default_password.js"
 import { Account } from "../models/index.js"
 import CODE from '../constants/status.js'
 import bcrypt from 'bcrypt'
-import { where } from "sequelize"
 
 function findAll(req, res) {
     res.json({ok: 'ok123'})

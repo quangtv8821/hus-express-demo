@@ -1,5 +1,6 @@
-import Documnent from '../models/document.model.js'
+import { Document } from "../models/index.js"
 import multer from 'multer'
+import CODE from '../constants/status.js'
 
 const storage = multer.diskStorage({
     destination: function (request, document, cb) {
@@ -20,8 +21,30 @@ const upload = multer({
 * 1. Upload cocument to server
 * 2. Insert data of document info into database
 */
-function create(req, res) {
-
+async function bulkCreate(req, res) {
+  try {
+    await upload(req, res, async (error) => {
+      if (error) {
+        res.status(500).json({message: 'Upload error'})
+      }
+      const documents = req.files // use .files to get files from request
+  
+      if (documents.length === 0) return res.status(500).json({message: 'Upload error'})
+  
+      const payload = documents.map((document) => ({
+        name: document.originalname,
+        type: document.mimetype,
+        size: document.size,
+        // account_id: request.account.id,
+        account_id: req.params.id,
+      }))
+      
+      const result = await Document.bulkCreate(payload)
+      return res.status(CODE.SUCCESS).json(result)
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 function findByLesson(req, res) {
@@ -30,6 +53,6 @@ function findByLesson(req, res) {
 
 
 export {
-    create,
+  bulkCreate,
     findByLesson,
 }

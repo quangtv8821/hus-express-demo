@@ -23,7 +23,7 @@ export default function (sequelize) {
         }
     }, {
         sequelize,
-        modelName: 'class'
+        modelName: 'subject'
     })
 
     return Subject
