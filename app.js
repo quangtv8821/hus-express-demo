@@ -25,6 +25,9 @@ app.use(bodyParser.json())
 // use cors
 app.use(cors(corsOptions))
 
+//static image
+app.use('/static', express.static('src/public'))
+
 // router
 app.use('/account', accountRoute)
 app.use('/student', studentRoute)

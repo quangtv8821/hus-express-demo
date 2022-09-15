@@ -55,3 +55,6 @@ A simple ExpressJS server.
 -- 1 subject has 1 teacher
 -- 1 subject has many lessons
 
+## Documents path
+
+ENV + '/static/public/<document_name>'

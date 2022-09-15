@@ -17,6 +17,7 @@ export default function (sequelize) {
         },
         url: {
             type: DataTypes.STRING,
+            allowNull: false,
         }
     }, {
         sequelize,

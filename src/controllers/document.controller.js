@@ -35,8 +35,9 @@ async function bulkCreate(req, res) {
         name: document.originalname,
         type: document.mimetype,
         size: document.size,
+        url: `/static/documents/${document.originalname}`,
+        accountId: req.params.id,
         // account_id: request.account.id,
-        account_id: req.params.id,
       }))
       
       const result = await Document.bulkCreate(payload)
